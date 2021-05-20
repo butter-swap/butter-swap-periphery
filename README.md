@@ -1,3 +1,3 @@
-# Butter Router
+# ButterSwap Periphery
 
 ButterSwap exchange related smart contracts.
