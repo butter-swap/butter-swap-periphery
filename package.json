@@ -1,0 +1,53 @@
+{
+  "name": "butterswap-peripheral",
+  "version": "1.0.0",
+  "description": "🎚 Peripheral smart contracts for interacting with Butter",
+  "engines": {
+    "node": ">=10"
+  },
+  "homepage": "https://butterswap.finance",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/butterswap/butter-swap-periphery.git"
+  },
+  "files": [
+    "build",
+    "contracts"
+  ],
+  "dependencies": {
+    "@butterswap-libs/butter-swap-core": "1.0.0",
+    "@truffle/hdwallet-provider": "1.2.3",
+    "truffle": "5.3.3",
+    "@uniswap/lib": "4.0.1-alpha",
+    "@uniswap/v2-core": "^1.0.1",
+    "truffle-plugin-verify": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "ethereum-waffle": "^2.4.1",
+    "ethereumjs-util": "^6.2.0",
+    "mocha": "^6.2.2",
+    "ncp": "^2.0.0",
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "solc": "0.6.6",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3",
+    "@truffle/contract": "4.3.14"
+  },
+  "scripts": {
+    "lint": "yarn prettier ./test/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts --write",
+    "clean": "rimraf ./build/",
+    "copy-v1-artifacts": "ncp ./buildV1 ./build",
+    "precompile": "yarn clean",
+    "compile": "waffle .waffle.json",
+    "postcompile": "yarn copy-v1-artifacts",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "prepublishOnly": "yarn test"
+  },
+  "license": "GPL-3.0-or-later"
+}
